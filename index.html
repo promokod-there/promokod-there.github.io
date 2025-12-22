@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>РџСЂРѕРјРѕРєРѕРґС‹ Рё РЎРєРёРґРєРё - РќР°Р№РґРё Р›СѓС‡С€РёРµ РљРѕРґС‹</title>
     <meta name="description" content="РђРєС‚СѓР°Р»СЊРЅС‹Рµ РїСЂРѕРјРѕРєРѕРґС‹ Рё СЃРєРёРґРєРё. РљРѕРїРёСЂСѓР№ РєРѕРґС‹ Рё РїРѕР»СѓС‡Р°Р№ СЃРєРёРґРєРё РЅР° РїРѕРєСѓРїРєРё. Р’СЃРµ Р°РєС‚РёРІРЅС‹Рµ РїСЂРѕРјРѕРєРѕРґС‹ РІ РѕРґРЅРѕРј РјРµСЃС‚Рµ.">
     <meta name="verify-admitad" content="c7cb9d56ae" />
@@ -18,10 +19,6 @@
             --color-text-secondary: #7fffd4;
             --color-border: #1a5c5c;
             --color-success: #00ff88;
-            --aurora-green: #00ff88;
-            --aurora-cyan: #00ffff;
-            --aurora-purple: #7700ff;
-            --aurora-pink: #ff00ff;
         }
 
         * {
@@ -41,180 +38,6 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
-        }
-
-        .login-screen {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background: #000000;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .login-screen::before {
-            content: '';
-            position: absolute;
-            top: -40%;
-            right: -40%;
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-
-        .login-box {
-            background: rgba(10, 26, 26, 0.3);
-            backdrop-filter: blur(15px);
-            padding: 50px;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 80px rgba(0, 255, 136, 0.15), inset 0 0 30px rgba(0, 255, 136, 0.05);
-            width: 100%;
-            max-width: 420px;
-            position: relative;
-            z-index: 1;
-            border: 2px solid rgba(0, 255, 136, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .login-box:hover {
-            background: rgba(10, 26, 26, 0.5);
-            border-color: rgba(0, 255, 136, 0.6);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 120px rgba(0, 255, 136, 0.3), inset 0 0 40px rgba(0, 255, 136, 0.1);
-        }
-
-        .login-box h1 {
-            margin: 0 0 40px 0;
-            text-align: center;
-            color: var(--color-primary);
-            font-size: 32px;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 500;
-            font-size: 14px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--color-border);
-            border-radius: 6px;
-            font-size: 14px;
-        }
-
-        .form-group input:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
-
-        .btn {
-            width: 100%;
-            padding: 14px;
-            background: var(--color-accent);
-            color: #000000;
-            border: none;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-            letter-spacing: -0.3px;
-        }
-
-        .btn:hover {
-            background: var(--color-accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(0, 255, 136, 0.4), 0 0 30px rgba(0, 255, 136, 0.5), 0 0 60px rgba(0, 255, 255, 0.2);
-        }
-
-        .btn:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.3), 0 0 30px rgba(0, 255, 136, 0.4), 0 0 60px rgba(119, 0, 255, 0.2);
-        }
-
-        .btn-secondary {
-            background: rgba(160, 174, 192, 0.1);
-            color: var(--color-text-secondary);
-            border: 1px solid var(--color-border);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(160, 174, 192, 0.2);
-            color: var(--color-text);
-        }
-
-        .error-message {
-            color: #ff6b6b;
-            font-size: 14px;
-            margin-top: 10px;
-            text-align: center;
-        }
-
-        .app-screen {
-            display: none;
-        }
-
-        .app-screen.active {
-            display: block;
-        }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 28px;
-        }
-
-        .logout-btn {
-            padding: 10px 20px;
-            font-size: 14px;
-        }
-
-        .search-box {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 40px;
-            display: block;
-            padding: 14px 20px;
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            font-size: 15px;
-            transition: all 0.3s;
-            background: var(--color-surface);
-            letter-spacing: -0.3px;
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
-
-        .public-screen {
-            display: none;
-        }
-
-        .public-screen.active {
-            display: block;
         }
 
         .public-header {
@@ -252,6 +75,26 @@
             margin: 0 0 30px 0;
             font-weight: 400;
             letter-spacing: -0.3px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            display: block;
+            padding: 14px 20px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: var(--color-surface);
+            letter-spacing: -0.3px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
         }
 
         .promo-list {
@@ -407,11 +250,6 @@
         }
 
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
             .promo-card-public {
                 flex-direction: column;
                 gap: 20px;
@@ -424,107 +262,44 @@
             .action-btn {
                 width: 100%;
             }
+
+            .public-header h1 {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="login-screen" id="loginScreen">
-        <div class="login-box">
-            <h1>рџ”ђ РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ</h1>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="password">РџР°СЂРѕР»СЊ:</label>
-                    <input type="password" id="password" placeholder="Р’РІРµРґРёС‚Рµ РїР°СЂРѕР»СЊ" required>
-                </div>
-                <button type="submit" class="btn">Р’РѕР№С‚Рё РІ Р°РґРјРёРЅ-РїР°РЅРµР»СЊ</button>
-                <div class="error-message" id="loginError"></div>
-            </form>
+    <div class="container">
+        <div class="public-header">
+            <h1>рџЋЃ РџСЂРѕРјРѕРєРѕРґС‹ Рё РЎРєРёРґРєРё</h1>
+            <p>Р’СЃРµ Р°РєС‚СѓР°Р»СЊРЅС‹Рµ РїСЂРѕРјРѕРєРѕРґС‹ РІ РѕРґРЅРѕРј РјРµСЃС‚Рµ</p>
         </div>
-    </div>
 
-    <div class="public-screen" id="publicScreen">
-        <div class="container">
-            <div class="public-header">
-                <h1>рџЋЃ РџСЂРѕРјРѕРєРѕРґС‹ Рё РЎРєРёРґРєРё</h1>
-                <p>Р’СЃРµ Р°РєС‚СѓР°Р»СЊРЅС‹Рµ РїСЂРѕРјРѕРєРѕРґС‹ РІ РѕРґРЅРѕРј РјРµСЃС‚Рµ</p>
-            </div>
+        <input type="text" class="search-box" id="publicSearchBox" placeholder="рџ”Ќ РџРѕРёСЃРє РїСЂРѕРјРѕРєРѕРґРѕРІ...">
 
-            <input type="text" class="search-box" id="publicSearchBox" placeholder="рџ”Ќ РџРѕРёСЃРє РїСЂРѕРјРѕРєРѕРґРѕРІ...">
-
-            <div class="promo-list" id="publicPromoList">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>Р—Р°РіСЂСѓР·РєР° РїСЂРѕРјРѕРєРѕРґРѕРІ...</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="app-screen" id="appScreen">
-        <div class="container">
-            <div class="header">
-                <h1>рџ“¦ РЈРїСЂР°РІР»РµРЅРёРµ РџСЂРѕРјРѕРєРѕРґР°РјРё</h1>
-                <button class="btn btn-secondary logout-btn" id="logoutBtn">Р’С‹С…РѕРґ</button>
-            </div>
-
-            <p style="text-align: center; color: var(--color-text-secondary); margin-bottom: 30px;">
-                рџ’Ў РџСЂРѕРјРѕРєРѕРґС‹ Р·Р°РіСЂСѓР¶Р°СЋС‚СЃСЏ РёР· Google Sheets. РћР±РЅРѕРІРёС‚Рµ С‚Р°Р±Р»РёС†Сѓ Рё РЅР°Р¶РјРёС‚Рµ F5 РґР»СЏ РѕР±РЅРѕРІР»РµРЅРёСЏ.
-            </p>
-
-            <input type="text" class="search-box" id="searchBox" placeholder="рџ”Ќ РџРѕРёСЃРє РїРѕ РєРѕРґСѓ РёР»Рё РѕРїРёСЃР°РЅРёСЋ...">
-
-            <div class="promo-list" id="promoList">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    <p>Р—Р°РіСЂСѓР·РєР° РїСЂРѕРјРѕРєРѕРґРѕРІ...</p>
-                </div>
+        <div class="promo-list" id="publicPromoList">
+            <div class="loading">
+                <div class="spinner"></div>
+                <p>Р—Р°РіСЂСѓР·РєР° РїСЂРѕРјРѕРєРѕРґРѕРІ...</p>
             </div>
         </div>
     </div>
 
     <script>
-        const DEFAULT_PASSWORD = 'Yunusov1997@';
         const SHEETS_ID = '1idWh0yBX_YjO155R99NVNg28_-2P15r0kry7EB5GG_8';
         const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SHEETS_ID}/export?format=csv`;
         
         let promos = [];
-        let isLoggedIn = false;
         let allPromos = [];
 
         function init() {
             loadPromosFromSheet();
             setupEventListeners();
-            checkLogin();
         }
 
-        function checkLogin() {
-            const loginToken = localStorage.getItem('promoLoginToken');
-            if (loginToken === 'true') {
-                isLoggedIn = true;
-                showApp();
-            } else {
-                showLogin();
-            }
-        }
-
-        function showLogin() {
-            document.getElementById('loginScreen').style.display = 'flex';
-            document.getElementById('appScreen').classList.remove('active');
-            document.getElementById('publicScreen').classList.remove('active');
-        }
-
-        function showApp() {
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('appScreen').classList.add('active');
-            document.getElementById('publicScreen').classList.remove('active');
-            renderPromos();
-        }
-
-        function showPublic() {
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('appScreen').classList.remove('active');
-            document.getElementById('publicScreen').classList.add('active');
-            renderPublicPromos();
+        function setupEventListeners() {
+            document.getElementById('publicSearchBox').addEventListener('input', handlePublicSearch);
         }
 
         function loadPromosFromSheet() {
@@ -533,17 +308,11 @@
                 .then(csv => {
                     promos = parseCSV(csv);
                     allPromos = JSON.parse(JSON.stringify(promos));
-                    if (!isLoggedIn) {
-                        showPublic();
-                    } else {
-                        renderPromos();
-                    }
+                    renderPublicPromos();
                 })
                 .catch(error => {
                     console.error('РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С‚Р°Р±Р»РёС†С‹:', error);
-                    if (!isLoggedIn) {
-                        showPublic();
-                    }
+                    document.getElementById('publicPromoList').innerHTML = '<div class="empty-state"><p>РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё РїСЂРѕРјРѕРєРѕРґРѕРІ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕР·Р¶Рµ.</p></div>';
                 });
         }
 
@@ -556,7 +325,6 @@
             const nameIndex = headers.indexOf('name');
             const descriptionIndex = headers.indexOf('description');
             const statusIndex = headers.indexOf('status');
-            const createdAtIndex = headers.indexOf('createdat');
 
             const result = [];
             for (let i = 1; i < lines.length; i++) {
@@ -567,63 +335,11 @@
                         code: cells[codeIndex] || '',
                         name: cells[nameIndex] || '',
                         description: cells[descriptionIndex] || '',
-                        status: cells[statusIndex] || 'active',
-                        createdAt: cells[createdAtIndex] || new Date().toLocaleDateString('ru-RU')
+                        status: cells[statusIndex] || 'active'
                     });
                 }
             }
             return result;
-        }
-
-        function setupEventListeners() {
-            document.getElementById('loginForm').addEventListener('submit', handleLogin);
-            document.getElementById('logoutBtn').addEventListener('click', handleLogout);
-            document.getElementById('searchBox').addEventListener('input', handleSearch);
-            document.getElementById('publicSearchBox').addEventListener('input', handlePublicSearch);
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            const password = document.getElementById('password').value;
-            
-            if (password === DEFAULT_PASSWORD) {
-                localStorage.setItem('promoLoginToken', 'true');
-                isLoggedIn = true;
-                document.getElementById('password').value = '';
-                document.getElementById('loginError').textContent = '';
-                showApp();
-            } else {
-                document.getElementById('loginError').textContent = 'вќЊ РќРµРІРµСЂРЅС‹Р№ РїР°СЂРѕР»СЊ';
-                document.getElementById('password').value = '';
-            }
-        }
-
-        function handleLogout() {
-            localStorage.removeItem('promoLoginToken');
-            isLoggedIn = false;
-            showPublic();
-        }
-
-        function renderPromos() {
-            const promoList = document.getElementById('promoList');
-            
-            if (promos.length === 0) {
-                promoList.innerHTML = '<div class="empty-state"><p>РџСЂРѕРјРѕРєРѕРґРѕРІ РЅРµС‚</p></div>';
-                return;
-            }
-
-            promoList.innerHTML = promos.map(promo => `
-                <div class="promo-card-public">
-                    <div class="promo-info-public">
-                        <div class="promo-code-public">${escapeHtml(promo.code)}</div>
-                        <div class="promo-name-public">${escapeHtml(promo.name)}</div>
-                        <div class="promo-description-public">${escapeHtml(promo.description)}</div>
-                        <div style="font-size: 12px; color: var(--color-text-secondary); margin-top: 10px;">
-                            рџ“… ${promo.createdAt} вЂў ${promo.status === 'active' ? 'вњ“ РђРєС‚РёРІРЅС‹Р№' : 'вЉ РќРµР°РєС‚РёРІРЅС‹Р№'}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
         }
 
         function renderPublicPromos() {
@@ -681,16 +397,6 @@
                     button.textContent = 'рџ“‹ РљРѕРїРёСЂРѕРІР°С‚СЊ';
                 }
             }
-        }
-
-        function handleSearch(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            promos = allPromos.filter(p => 
-                p.code.toLowerCase().includes(searchTerm) || 
-                p.name.toLowerCase().includes(searchTerm) ||
-                p.description.toLowerCase().includes(searchTerm)
-            );
-            renderPromos();
         }
 
         function handlePublicSearch(e) {
