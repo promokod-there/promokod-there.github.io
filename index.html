@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Промокоды и Скидки - Найди Лучшие Коды</title>
+    <meta name="description" content="Актуальные промокоды и скидки. Копируй коды и получай скидки на покупки. Все активные промокоды в одном месте.">
+    <style>
+        :root {
+            --color-primary: #ffffff;
+            --color-secondary: #a0aec0;
+            --color-accent: #00ff88;
+            --color-accent-dark: #00dd77;
+            --color-bg: #000000;
+            --color-surface: #0a1a1a;
+            --color-text: #e0ffff;
+            --color-text-secondary: #7fffd4;
+            --color-border: #1a5c5c;
+            --color-success: #00ff88;
+            --aurora-green: #00ff88;
+            --aurora-cyan: #00ffff;
+            --aurora-purple: #7700ff;
+            --aurora-pink: #ff00ff;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            margin: 0;
+            padding: 0;
+            letter-spacing: -0.5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .login-screen {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: #000000;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-screen::before {
+            content: '';
+            position: absolute;
+            top: -40%;
+            right: -40%;
+            width: 60%;
+            height: 60%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.06) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .login-box {
+            background: rgba(10, 26, 26, 0.3);
+            backdrop-filter: blur(15px);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 80px rgba(0, 255, 136, 0.15), inset 0 0 30px rgba(0, 255, 136, 0.05);
+            width: 100%;
+            max-width: 420px;
+            position: relative;
+            z-index: 1;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .login-box:hover {
+            background: rgba(10, 26, 26, 0.5);
+            border-color: rgba(0, 255, 136, 0.6);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 120px rgba(0, 255, 136, 0.3), inset 0 0 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .login-box h1 {
+            margin: 0 0 40px 0;
+            text-align: center;
+            color: var(--color-primary);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            background: var(--color-accent);
+            color: #000000;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            letter-spacing: -0.3px;
+        }
+
+        .btn:hover {
+            background: var(--color-accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 255, 136, 0.4), 0 0 30px rgba(0, 255, 136, 0.5), 0 0 60px rgba(0, 255, 255, 0.2);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.3), 0 0 30px rgba(0, 255, 136, 0.4), 0 0 60px rgba(119, 0, 255, 0.2);
+        }
+
+        .btn-secondary {
+            background: rgba(160, 174, 192, 0.1);
+            color: var(--color-text-secondary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(160, 174, 192, 0.2);
+            color: var(--color-text);
+        }
+
+        .btn-danger {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ff6b6b;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .btn-danger:hover {
+            background: rgba(239, 68, 68, 0.25);
+            color: #ff8787;
+        }
+
+        .btn-success {
+            background: var(--color-success);
+        }
+
+        .btn-success:hover {
+            background: #1a6b6c;
+        }
+
+        .error-message {
+            color: var(--color-error);
+            font-size: 14px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .app-screen {
+            display: none;
+        }
+
+        .app-screen.active {
+            display: block;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+
+        .search-box {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 40px;
+            display: block;
+            padding: 14px 20px;
+            border: 1px solid var(--color-border);
+            border-radius: 12px;
+            font-size: 15px;
+            transition: all 0.3s;
+            background: var(--color-surface);
+            letter-spacing: -0.3px;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--color-accent);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .add-promo-section {
+            background: rgba(10, 26, 26, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.05), inset 0 0 20px rgba(0, 255, 136, 0.03);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .add-promo-section:hover {
+            background: rgba(10, 26, 26, 0.4);
+            border-color: rgba(0, 255, 255, 0.35);
+            box-shadow: 0 4px 30px rgba(0, 255, 136, 0.15), 0 0 40px rgba(0, 255, 255, 0.08), inset 0 0 25px rgba(0, 255, 136, 0.08);
+        }
+
+        .add-promo-section h2 {
+            margin: 0 0 20px 0;
+            font-size: 18px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-row input, .form-row select, .form-row textarea {
+            padding: 10px;
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .form-row textarea {
+            grid-column: 1 / -1;
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: flex-start;
+        }
+
+        .form-actions .btn {
+            flex: 0 1 150px;
+        }
+
+        .promo-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .promo-card {
+            background: rgba(10, 26, 26, 0.25);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--aurora-green);
+            box-shadow: 0 4px 20px rgba(0, 255, 136, 0.08), inset 0 0 15px rgba(0, 255, 136, 0.03);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+            flex-wrap: wrap;
+            transition: all 0.3s ease;
+        }
+
+        .promo-card:hover {
+            background: rgba(10, 26, 26, 0.5);
+            border-left-color: var(--aurora-cyan);
+            box-shadow: 0 8px 40px rgba(0, 255, 136, 0.2), 0 0 50px rgba(0, 255, 255, 0.1), inset 0 0 25px rgba(0, 255, 136, 0.1);
+            transform: translateY(-2px);
+            border-color: rgba(0, 255, 255, 0.3);
+        }
+
+        .promo-card.inactive {
+            opacity: 0.6;
+            border-left-color: #999;
+        }
+
+        .promo-info {
+            flex: 1;
+            min-width: 250px;
+        }
+
+        .promo-code {
+            font-family: 'Courier New', monospace;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 0 0 8px 0;
+            word-break: break-all;
+        }
+
+        .promo-description {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin: 0 0 10px 0;
+        }
+
+        .promo-meta {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 13px;
+            color: var(--color-text-secondary);
+        }
+
+        .promo-status {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-active {
+            background: rgba(32, 140, 141, 0.15);
+            color: var(--color-success);
+        }
+
+        .status-inactive {
+            background: rgba(200, 200, 200, 0.3);
+            color: #999;
+        }
+
+        .promo-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .promo-actions button {
+            padding: 8px 16px;
+            font-size: 12px;
+            flex: 0 1 auto;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--color-text-secondary);
+        }
+
+        .empty-state p {
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .public-screen {
+            display: none;
+        }
+
+        .public-screen.active {
+            display: block;
+        }
+
+        .public-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 60px 20px 20px;
+            position: relative;
+        }
+
+        .public-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .public-header h1 {
+            font-size: 56px;
+            margin: 0 0 16px 0;
+            color: var(--color-primary);
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        .public-header p {
+            font-size: 18px;
+            color: var(--color-text-secondary);
+            margin: 0 0 30px 0;
+            font-weight: 400;
+            letter-spacing: -0.3px;
+        }
+
+        .promo-card-public {
+            background: rgba(10, 26, 26, 0.25);
+            backdrop-filter: blur(12px);
+            padding: 32px;
+            border-radius: 16px;
+            border: 2px solid rgba(0, 255, 136, 0.2);
+            box-shadow: 0 8px 40px rgba(0, 255, 136, 0.1), inset 0 0 25px rgba(0, 255, 136, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .promo-card-public::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 255, 0.08) 100%);
+            transition: right 0.3s ease;
+        }
+
+        .promo-card-public:hover {
+            background: rgba(10, 26, 26, 0.5);
+            box-shadow: 0 12px 60px rgba(0, 255, 136, 0.25), 0 0 60px rgba(119, 0, 255, 0.08), inset 0 0 35px rgba(0, 255, 136, 0.12);
+            transform: translateY(-4px);
+            border-color: rgba(0, 255, 255, 0.5);
+        }
+
+        .promo-card-public:hover::before {
+            right: 0;
+        }
+
+        .promo-code-hidden {
+            position: relative;
+            display: inline-block;
+        }
+
+        .promo-hidden-blur {
+            filter: blur(8px);
+            user-select: none;
+            transition: all 0.3s ease;
+        }
+
+        .promo-hidden-blur.revealed {
+            filter: blur(0px);
+        }
+
+        .show-promo-btn {
+            padding: 8px 16px;
+            background: rgba(0, 255, 136, 0.2);
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent);
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            display: inline-block;
+        }
+
+        .show-promo-btn:hover {
+            background: var(--color-accent);
+            color: #000000;
+        }
+
+        .promo-info-public {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .promo-code-public {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin: 0 0 12px 0;
+            word-break: break-all;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 14px 16px;
+            border-radius: 10px;
+            display: inline-block;
+            letter-spacing: -0.5px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .promo-name-public {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 14px 0 10px 0;
+            color: var(--color-primary);
+            letter-spacing: -0.4px;
+        }
+
+        .promo-description-public {
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            margin: 0;
+            line-height: 1.6;
+            letter-spacing: -0.2px;
+        }
+
+        .copy-btn {
+            padding: 14px 28px;
+            background: var(--color-accent);
+            color: #000000;
+            border: none;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            white-space: nowrap;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.3px;
+        }
+
+        .copy-btn:hover {
+            background: var(--color-accent-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 40px rgba(0, 255, 136, 0.6), 0 0 40px rgba(0, 255, 255, 0.3), 0 0 20px rgba(119, 0, 255, 0.2);
+        }
+
+        .copy-btn:focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 2px;
+            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.4), 0 0 30px rgba(0, 255, 136, 0.4), 0 0 50px rgba(119, 0, 255, 0.3);
+        }
+
+        .copy-btn.copied {
+            background: #4CAF50;
+        }
+
+        @media (max-width: 768px) {
+            .promo-card {
+                flex-direction: column;
+            }
+
+            .promo-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: rgba(10, 26, 26, 0.35);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid rgba(0, 255, 136, 0.3);
+            box-shadow: 0 20px 80px rgba(0,0,0,0.8), 0 0 80px rgba(0, 255, 136, 0.2), inset 0 0 40px rgba(0, 255, 136, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .modal-content:hover {
+            background: rgba(10, 26, 26, 0.5);
+            border-color: rgba(0, 255, 255, 0.5);
+            box-shadow: 0 20px 80px rgba(0,0,0,0.8), 0 0 100px rgba(0, 255, 136, 0.3), 0 0 60px rgba(119, 0, 255, 0.15), inset 0 0 50px rgba(0, 255, 136, 0.12);
+        }
+
+        .modal-header {
+            margin-bottom: 20px;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: flex-end;
+        }
+
+        .modal-actions .btn {
+            flex: 0 1 120px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Экран входа для админа -->
+    <div class="login-screen" id="loginScreen">
+        <div class="login-box">
+            <h1>🔐 Администратор</h1>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="password">Пароль:</label>
+                    <input type="password" id="password" placeholder="Введите пароль" required>
+                </div>
+                <button type="submit" class="btn">Войти в админ-панель</button>
+                <div class="error-message" id="loginError"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Публичная страница с промокодами -->
+    <div class="public-screen" id="publicScreen">
+        <div class="container">
+            <div class="public-header">
+                <h1>🎁 Промокоды и Скидки</h1>
+                <p>Все актуальные промокоды в одном месте</p>
+            </div>
+
+            <input type="text" class="search-box" id="publicSearchBox" placeholder="🔍 Поиск промокодов...">
+
+            <div class="promo-list" id="publicPromoList">
+                <div class="empty-state">
+                    <p>Нет активных промокодов</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Основное приложение (админ-панель) -->
+    <div class="app-screen" id="appScreen">
+        <div class="container">
+            <div class="header">
+                <div>
+                    <h1>📦 Управление Промокодами</h1>
+                </div>
+                <button class="btn btn-secondary logout-btn" id="logoutBtn">Выход</button>
+            </div>
+
+            <input type="text" class="search-box" id="searchBox" placeholder="🔍 Поиск по коду или описанию...">
+
+            <div class="add-promo-section">
+                <h2>➕ Добавить новый промокод</h2>
+                <form id="addPromoForm">                <div class="form-row">
+                    <input type="text" id="newCode" placeholder="Промокод или ссылка (например: PROMO2025 или http://...)" required>
+                    <input type="text" id="newName" placeholder="Название (например: Скидка 20%)" required>
+                </div>
+                    <div class="form-row">
+                        <textarea id="newDescription" placeholder="Описание промокода (что он даёт, условия использования)"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <select id="newStatus">
+                            <option value="active">Активный</option>
+                            <option value="inactive">Неактивный</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-success">Добавить промокод</button>
+                        <button type="reset" class="btn btn-secondary">Очистить</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="promo-list" id="promoList">
+                <div class="empty-state">
+                    <p>Промокодов нет. Добавьте первый промокод выше!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно редактирования -->
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>✏️ Редактировать промокод</h2>
+            </div>
+            <form id="editForm">
+                <div class="form-group">
+                    <label>Код:</label>
+                    <input type="text" id="editCode" required>
+                </div>
+                <div class="form-group">
+                    <label>Название:</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label>Описание:</label>
+                    <textarea id="editDescription" style="width: 100%; padding: 10px; border: 1px solid var(--color-border); border-radius: 6px; font-size: 14px; min-height: 80px;"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Статус:</label>
+                    <select id="editStatus" style="width: 100%; padding: 10px; border: 1px solid var(--color-border); border-radius: 6px; font-size: 14px;">
+                        <option value="active">Активный</option>
+                        <option value="inactive">Неактивный</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelEditBtn">Отмена</button>
+                    <button type="submit" class="btn btn-success">Сохранить</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const DEFAULT_PASSWORD = 'Yunusov1997@';
+        let promos = [];
+        let currentEditId = null;
+        let isLoggedIn = false;
+
+        // Инициализация
+        function init() {
+            loadPromos();
+            setupEventListeners();
+            checkLogin();
+        }
+
+        // Проверка входа
+        function checkLogin() {
+            const loginToken = localStorage.getItem('promoLoginToken');
+            if (loginToken === 'true') {
+                isLoggedIn = true;
+                showApp();
+            } else {
+                showLogin();
+            }
+        }
+
+        // Показать экран входа
+        function showLogin() {
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('appScreen').classList.remove('active');
+        }
+
+        // Показать приложение
+        function showApp() {
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('appScreen').classList.add('active');
+            renderPromos();
+        }
+
+        // Обработчики событий
+        function setupEventListeners() {
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('logoutBtn').addEventListener('click', handleLogout);
+            document.getElementById('addPromoForm').addEventListener('submit', handleAddPromo);
+            document.getElementById('searchBox').addEventListener('input', handleSearch);
+            document.getElementById('cancelEditBtn').addEventListener('click', closeEditModal);
+            document.getElementById('editForm').addEventListener('submit', handleEditPromo);
+        }
+
+        // Вход
+        function handleLogin(e) {
+            e.preventDefault();
+            const password = document.getElementById('password').value;
+            
+            if (password === DEFAULT_PASSWORD) {
+                localStorage.setItem('promoLoginToken', 'true');
+                isLoggedIn = true;
+                document.getElementById('password').value = '';
+                document.getElementById('loginError').textContent = '';
+                showApp();
+            } else {
+                document.getElementById('loginError').textContent = '❌ Неверный пароль';
+                document.getElementById('password').value = '';
+            }
+        }
+
+        // Выход
+        function handleLogout() {
+            localStorage.removeItem('promoLoginToken');
+            isLoggedIn = false;
+            document.getElementById('addPromoForm').reset();
+            showLogin();
+        }
+
+        // Добавить промокод
+        function handleAddPromo(e) {
+            e.preventDefault();
+            
+            const code = document.getElementById('newCode').value.trim();
+            const name = document.getElementById('newName').value.trim();
+            const description = document.getElementById('newDescription').value.trim();
+            const status = document.getElementById('newStatus').value;
+
+            if (!code || !name) {
+                alert('Заполните обязательные поля: код и название');
+                return;
+            }
+
+            const newPromo = {
+                id: Date.now(),
+                code: code,
+                name: name,
+                description: description,
+                status: status,
+                createdAt: new Date().toLocaleDateString('ru-RU')
+            };
+
+            promos.unshift(newPromo);
+            savePromos();
+            renderPromos();
+            document.getElementById('addPromoForm').reset();
+        }
+
+        // Отрендерить список промокодов
+        function renderPromos() {
+            const promoList = document.getElementById('promoList');
+            
+            if (promos.length === 0) {
+                promoList.innerHTML = '<div class="empty-state"><p>Промокодов нет. Добавьте первый промокод выше!</p></div>';
+                return;
+            }
+
+            promoList.innerHTML = promos.map(promo => `
+                <div class="promo-card ${promo.status === 'inactive' ? 'inactive' : ''}">
+                    <div class="promo-info">
+                        <div class="promo-code">${escapeHtml(promo.code)}</div>
+                        <div style="font-weight: 600; margin-bottom: 8px;">${escapeHtml(promo.name)}</div>
+                        <div class="promo-description">${escapeHtml(promo.description)}</div>
+                        <div class="promo-meta">
+                            <span>📅 Добавлен: ${promo.createdAt}</span>
+                            <span class="promo-status ${promo.status === 'active' ? 'status-active' : 'status-inactive'}">
+                                ${promo.status === 'active' ? '✓ Активный' : '⊘ Неактивный'}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="promo-actions">
+                        <button class="btn btn-secondary" onclick="openEditModal(${promo.id})">✏️ Редактировать</button>
+                        <button class="btn btn-danger" onclick="deletePromo(${promo.id})">🗑️ Удалить</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Поиск
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const filtered = promos.filter(p => 
+                p.code.toLowerCase().includes(searchTerm) || 
+                p.name.toLowerCase().includes(searchTerm) ||
+                p.description.toLowerCase().includes(searchTerm)
+            );
+
+            const promoList = document.getElementById('promoList');
+            if (filtered.length === 0) {
+                promoList.innerHTML = '<div class="empty-state"><p>Промокоды не найдены</p></div>';
+                return;
+            }
+
+            promoList.innerHTML = filtered.map(promo => `
+                <div class="promo-card ${promo.status === 'inactive' ? 'inactive' : ''}">
+                    <div class="promo-info">
+                        <div class="promo-code">${escapeHtml(promo.code)}</div>
+                        <div style="font-weight: 600; margin-bottom: 8px;">${escapeHtml(promo.name)}</div>
+                        <div class="promo-description">${escapeHtml(promo.description)}</div>
+                        <div class="promo-meta">
+                            <span>📅 Добавлен: ${promo.createdAt}</span>
+                            <span class="promo-status ${promo.status === 'active' ? 'status-active' : 'status-inactive'}">
+                                ${promo.status === 'active' ? '✓ Активный' : '⊘ Неактивный'}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="promo-actions">
+                        <button class="btn btn-secondary" onclick="openEditModal(${promo.id})">✏️ Редактировать</button>
+                        <button class="btn btn-danger" onclick="deletePromo(${promo.id})">🗑️ Удалить</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Открыть модальное окно редактирования
+        function openEditModal(id) {
+            currentEditId = id;
+            const promo = promos.find(p => p.id === id);
+            
+            if (promo) {
+                document.getElementById('editCode').value = promo.code;
+                document.getElementById('editName').value = promo.name;
+                document.getElementById('editDescription').value = promo.description;
+                document.getElementById('editStatus').value = promo.status;
+                document.getElementById('editModal').classList.add('active');
+            }
+        }
+
+        // Закрыть модальное окно
+        function closeEditModal() {
+            document.getElementById('editModal').classList.remove('active');
+            currentEditId = null;
+        }
+
+        // Сохранить изменения
+        function handleEditPromo(e) {
+            e.preventDefault();
+            
+            const promo = promos.find(p => p.id === currentEditId);
+            if (promo) {
+                promo.code = document.getElementById('editCode').value.trim();
+                promo.name = document.getElementById('editName').value.trim();
+                promo.description = document.getElementById('editDescription').value.trim();
+                promo.status = document.getElementById('editStatus').value;
+                
+                savePromos();
+                renderPromos();
+                closeEditModal();
+            }
+        }
+
+        // Удалить промокод
+        function deletePromo(id) {
+            if (confirm('Вы уверены, что хотите удалить этот промокод?')) {
+                promos = promos.filter(p => p.id !== id);
+                savePromos();
+                renderPromos();
+            }
+        }
+
+        // Сохранить в localStorage
+        function savePromos() {
+            localStorage.setItem('promos', JSON.stringify(promos));
+        }
+
+        // Загрузить из localStorage
+        function loadPromos() {
+            const saved = localStorage.getItem('promos');
+            if (saved) {
+                promos = JSON.parse(saved);
+            } else {
+                // Примеры промокодов
+                promos = [
+                    {
+                        id: Date.now() - 3000,
+                        code: 'PROMO-NEW-HERE',
+                        name: '🎉 Новогодняя скидка 25%',
+                        description: 'Скидка 25% на все товары. Действует с 01.12.2025 по 31.12.2025. Минимальная сумма заказа 500 рублей.',
+                        status: 'active',
+                        createdAt: '20.12.2025'
+                    },
+                    {
+                        id: Date.now() - 2000,
+                        code: 'WELCOME-50',
+                        name: '💝 Добро пожаловать 50 рублей',
+                        description: 'Скидка 50 рублей на первый заказ для новых клиентов. Используется один раз на аккаунт.',
+                        status: 'active',
+                        createdAt: '20.12.2025'
+                    },
+                    {
+                        id: Date.now() - 1000,
+                        code: 'SUMMER-20',
+                        name: '☀️ Летняя распродажа 20%',
+                        description: 'Скидка 20% на все летние товары. Код уже не актуален.',
+                        status: 'inactive',
+                        createdAt: '15.06.2025'
+                    }
+                ];
+                savePromos();
+            }
+        }
+
+        // Экранирование HTML
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, m => map[m]);
+        }
+
+        // Переключение между публичной и админ страницей
+        function showPublic() {
+            document.getElementById('publicScreen').classList.add('active');
+            document.getElementById('appScreen').classList.remove('active');
+            document.getElementById('loginScreen').style.display = 'none';
+            renderPublicPromos();
+        }
+
+        function showAdmin() {
+            document.getElementById('publicScreen').classList.remove('active');
+            document.getElementById('loginScreen').style.display = 'flex';
+        }
+
+        // Показать только активные промокоды для публики
+        function renderPublicPromos() {
+            const promoList = document.getElementById('publicPromoList');
+            const activePromos = promos.filter(p => p.status === 'active');
+            
+            if (activePromos.length === 0) {
+                promoList.innerHTML = '<div class="empty-state"><p>Нет активных промокодов</p></div>';
+                return;
+            }
+
+            promoList.innerHTML = activePromos.map(promo => {
+                const id = promo.id;
+                return `
+                <div class="promo-card-public">
+                    <div class="promo-info-public">
+                        <div class="promo-code-hidden">
+                            <div class="promo-code-public promo-hidden-blur" id="code-${id}">${escapeHtml(promo.code)}</div>
+                            <button class="show-promo-btn" onclick="togglePromoReveal(${id}, '${escapeHtml(promo.code)}')" id="btn-${id}">👁️ Показать</button>
+                        </div>
+                        <div class="promo-name-public">${escapeHtml(promo.name)}</div>
+                        <div class="promo-description-public">${escapeHtml(promo.description)}</div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+        }
+
+        // Проверка, является ли код ссылкой
+        function isUrl(code) {
+            return code.startsWith('http://') || code.startsWith('https://');
+        }
+
+        // Переключение видимости промокода
+        function togglePromoReveal(id, code) {
+            const codeElement = document.getElementById(`code-${id}`);
+            const button = document.getElementById(`btn-${id}`);
+            
+            if (codeElement.classList.contains('revealed')) {
+                // Скрыть обратно
+                codeElement.classList.remove('revealed');
+                button.textContent = '👁️ Показать';
+            } else {
+                // Раскрыть
+                codeElement.classList.add('revealed');
+                
+                if (isUrl(code)) {
+                    // Если ссылка - открыть в новой вкладке
+                    window.open(code, '_blank');
+                    button.textContent = '🌐 Открыть сайт';
+                } else {
+                    // Если промокод - скопировать в буфер обмена
+                    navigator.clipboard.writeText(code).then(() => {
+                        button.textContent = '✓ Скопировано!';
+                        setTimeout(() => {
+                            if (codeElement.classList.contains('revealed')) {
+                                button.textContent = '📋 Скопировано';
+                            }
+                        }, 2000);
+                    });
+                }
+            }
+        }
+
+        // Поиск в публичной версии
+        document.addEventListener('DOMContentLoaded', function() {
+            const publicSearchBox = document.getElementById('publicSearchBox');
+            if (publicSearchBox) {
+                publicSearchBox.addEventListener('input', function(e) {
+                    const searchTerm = e.target.value.toLowerCase();
+                    const activePromos = promos.filter(p => p.status === 'active');
+                    const filtered = activePromos.filter(p => 
+                        p.code.toLowerCase().includes(searchTerm) || 
+                        p.name.toLowerCase().includes(searchTerm) ||
+                        p.description.toLowerCase().includes(searchTerm)
+                    );
+
+                    const promoList = document.getElementById('publicPromoList');
+                    if (filtered.length === 0) {
+                        promoList.innerHTML = '<div class="empty-state"><p>Промокоды не найдены</p></div>';
+                        return;
+                    }
+
+                    promoList.innerHTML = filtered.map(promo => {
+                        const id = promo.id;
+                        return `
+                        <div class="promo-card-public">
+                            <div class="promo-info-public">
+                                <div class="promo-code-hidden">
+                                    <div class="promo-code-public promo-hidden-blur" id="code-${id}">${escapeHtml(promo.code)}</div>
+                                    <button class="show-promo-btn" onclick="togglePromoReveal(${id}, '${escapeHtml(promo.code)}')" id="btn-${id}">👁️ Показать</button>
+                                </div>
+                                <div class="promo-name-public">${escapeHtml(promo.name)}</div>
+                                <div class="promo-description-public">${escapeHtml(promo.description)}</div>
+                            </div>
+                        </div>
+                    `;
+                    }).join('');
+                });
+            }
+
+            const adminLoginBtn = document.getElementById('adminLoginBtn');
+            if (adminLoginBtn) {
+                adminLoginBtn.addEventListener('click', showAdmin);
+            }
+
+            const loginForm = document.getElementById('loginForm');
+            if (loginForm) {
+                loginForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const password = document.getElementById('password').value;
+                    
+                    if (password === DEFAULT_PASSWORD) {
+                        localStorage.setItem('promoLoginToken', 'true');
+                        isLoggedIn = true;
+                        document.getElementById('password').value = '';
+                        document.getElementById('loginError').textContent = '';
+                        document.getElementById('publicScreen').classList.remove('active');
+                        document.getElementById('appScreen').classList.add('active');
+                        document.getElementById('loginScreen').style.display = 'none';
+                        renderPromos();
+                    } else {
+                        document.getElementById('loginError').textContent = '❌ Неверный пароль';
+                        document.getElementById('password').value = '';
+                    }
+                });
+            }
+        });
+
+        // Запуск
+        init();
+        
+        // Проверка URL параметра для выбора экрана
+        const urlParams = new URLSearchParams(window.location.search);
+        const screen = urlParams.get('screen');
+        
+        if (screen === 'admin' && isLoggedIn) {
+            showApp();
+        } else {
+            showPublic();
+        }
+    </script>
+</body>
+</html>
