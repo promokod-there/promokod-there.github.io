@@ -3,14 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>РџСЂРѕРјРѕРєРѕРґС‹ Рё РЎРєРёРґРєРё - РќР°Р№РґРё Р›СѓС‡С€РёРµ РљРѕРґС‹</title>
-    <meta name="description" content="РђРєС‚СѓР°Р»СЊРЅС‹Рµ РїСЂРѕРјРѕРєРѕРґС‹ Рё СЃРєРёРґРєРё. РљРѕРїРёСЂСѓР№ РєРѕРґС‹ Рё РїРѕР»СѓС‡Р°Р№ СЃРєРёРґРєРё РЅР° РїРѕРєСѓРїРєРё. Р’СЃРµ Р°РєС‚РёРІРЅС‹Рµ РїСЂРѕРјРѕРєРѕРґС‹ РІ РѕРґРЅРѕРј РјРµСЃС‚Рµ.">
+    <title>Промокоды и Скидки</title>
     <meta name="verify-admitad" content="c7cb9d56ae" />
     <style>
         :root {
             --color-primary: #ffffff;
-            --color-secondary: #a0aec0;
             --color-accent: #00ff88;
             --color-accent-dark: #00dd77;
             --color-bg: #000000;
@@ -18,7 +15,6 @@
             --color-text: #e0ffff;
             --color-text-secondary: #7fffd4;
             --color-border: #1a5c5c;
-            --color-success: #00ff88;
         }
 
         * {
@@ -47,19 +43,6 @@
             position: relative;
         }
 
-        .public-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
-            border-radius: 50%;
-            z-index: -1;
-        }
-
         .public-header h1 {
             font-size: 56px;
             margin: 0 0 16px 0;
@@ -74,7 +57,6 @@
             color: var(--color-text-secondary);
             margin: 0 0 30px 0;
             font-weight: 400;
-            letter-spacing: -0.3px;
         }
 
         .search-box {
@@ -86,9 +68,8 @@
             border: 1px solid var(--color-border);
             border-radius: 12px;
             font-size: 15px;
-            transition: all 0.3s;
             background: var(--color-surface);
-            letter-spacing: -0.3px;
+            color: var(--color-text);
         }
 
         .search-box:focus {
@@ -119,26 +100,11 @@
             overflow: hidden;
         }
 
-        .promo-card-public::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent 0%, rgba(0, 255, 255, 0.08) 100%);
-            transition: right 0.3s ease;
-        }
-
         .promo-card-public:hover {
             background: rgba(10, 26, 26, 0.5);
             box-shadow: 0 12px 60px rgba(0, 255, 136, 0.25), 0 0 60px rgba(119, 0, 255, 0.08), inset 0 0 35px rgba(0, 255, 136, 0.12);
             transform: translateY(-4px);
             border-color: rgba(0, 255, 255, 0.5);
-        }
-
-        .promo-card-public:hover::before {
-            right: 0;
         }
 
         .promo-info-public {
@@ -159,7 +125,6 @@
             padding: 14px 16px;
             border-radius: 10px;
             display: inline-block;
-            letter-spacing: -0.5px;
             border: 1px solid rgba(99, 102, 241, 0.3);
             filter: blur(8px);
             transition: filter 0.3s ease;
@@ -182,7 +147,6 @@
             color: var(--color-text-secondary);
             margin: 0;
             line-height: 1.6;
-            letter-spacing: -0.2px;
         }
 
         .action-btn {
@@ -198,19 +162,12 @@
             white-space: nowrap;
             position: relative;
             z-index: 1;
-            letter-spacing: -0.3px;
         }
 
         .action-btn:hover {
             background: var(--color-accent-dark);
             transform: translateY(-2px);
             box-shadow: 0 8px 40px rgba(0, 255, 136, 0.6), 0 0 40px rgba(0, 255, 255, 0.3), 0 0 20px rgba(119, 0, 255, 0.2);
-        }
-
-        .action-btn:focus-visible {
-            outline: 2px solid var(--color-accent);
-            outline-offset: 2px;
-            box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.4), 0 0 30px rgba(0, 255, 136, 0.4), 0 0 50px rgba(119, 0, 255, 0.3);
         }
 
         .action-btn.copied {
@@ -221,11 +178,6 @@
             text-align: center;
             padding: 60px 20px;
             color: var(--color-text-secondary);
-        }
-
-        .empty-state p {
-            font-size: 16px;
-            margin: 0;
         }
 
         .loading {
@@ -255,16 +207,8 @@
                 gap: 20px;
             }
 
-            .promo-info-public {
-                width: 100%;
-            }
-
             .action-btn {
                 width: 100%;
-            }
-
-            .public-header h1 {
-                font-size: 36px;
             }
         }
     </style>
@@ -272,16 +216,16 @@
 <body>
     <div class="container">
         <div class="public-header">
-            <h1>рџЋЃ РџСЂРѕРјРѕРєРѕРґС‹ Рё РЎРєРёРґРєРё</h1>
-            <p>Р’СЃРµ Р°РєС‚СѓР°Р»СЊРЅС‹Рµ РїСЂРѕРјРѕРєРѕРґС‹ РІ РѕРґРЅРѕРј РјРµСЃС‚Рµ</p>
+            <h1>🎁 Промокоды и Скидки</h1>
+            <p>Все актуальные промокоды в одном месте</p>
         </div>
 
-        <input type="text" class="search-box" id="publicSearchBox" placeholder="рџ”Ќ РџРѕРёСЃРє РїСЂРѕРјРѕРєРѕРґРѕРІ...">
+        <input type="text" class="search-box" id="publicSearchBox" placeholder="🔍 Поиск промокодов...">
 
         <div class="promo-list" id="publicPromoList">
             <div class="loading">
                 <div class="spinner"></div>
-                <p>Р—Р°РіСЂСѓР·РєР° РїСЂРѕРјРѕРєРѕРґРѕРІ...</p>
+                <p>Загрузка промокодов...</p>
             </div>
         </div>
     </div>
@@ -295,10 +239,6 @@
 
         function init() {
             loadPromosFromSheet();
-            setupEventListeners();
-        }
-
-        function setupEventListeners() {
             document.getElementById('publicSearchBox').addEventListener('input', handlePublicSearch);
         }
 
@@ -311,8 +251,8 @@
                     renderPublicPromos();
                 })
                 .catch(error => {
-                    console.error('РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё С‚Р°Р±Р»РёС†С‹:', error);
-                    document.getElementById('publicPromoList').innerHTML = '<div class="empty-state"><p>РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё РїСЂРѕРјРѕРєРѕРґРѕРІ. РџРѕРїСЂРѕР±СѓР№С‚Рµ РїРѕР·Р¶Рµ.</p></div>';
+                    console.error('Ошибка загрузки:', error);
+                    document.getElementById('publicPromoList').innerHTML = '<div class="empty-state"><p>Ошибка загрузки промокодов</p></div>';
                 });
         }
 
@@ -347,12 +287,12 @@
             const activePromos = promos.filter(p => p.status.toLowerCase().trim() === 'active');
             
             if (activePromos.length === 0) {
-                promoList.innerHTML = '<div class="empty-state"><p>РќРµС‚ Р°РєС‚РёРІРЅС‹С… РїСЂРѕРјРѕРєРѕРґРѕРІ</p></div>';
+                promoList.innerHTML = '<div class="empty-state"><p>Нет активных промокодов</p></div>';
                 return;
             }
 
             promoList.innerHTML = activePromos.map(promo => {
-                const buttonText = isUrl(promo.code) ? 'рџЊђ РћС‚РєСЂС‹С‚СЊ СЃР°Р№С‚' : 'рџ‘ЃпёЏ РџРѕРєР°Р·Р°С‚СЊ РєРѕРґ';
+                const buttonText = isUrl(promo.code) ? '🌐 Открыть сайт' : '👁️ Показать код';
                 return `
                     <div class="promo-card-public">
                         <div class="promo-info-public">
@@ -375,17 +315,17 @@
             
             if (isUrl(code)) {
                 window.open(code, '_blank');
-                button.textContent = 'рџ”— РћС‚РєСЂС‹С‚Рѕ';
+                button.textContent = '🔗 Открыто';
                 button.style.background = '#666';
                 setTimeout(() => {
-                    button.textContent = 'рџЊђ РћС‚РєСЂС‹С‚СЊ СЃР°Р№С‚';
+                    button.textContent = '🌐 Открыть сайт';
                     button.style.background = '';
                 }, 2000);
             } else {
                 if (codeElement.classList.contains('revealed')) {
                     navigator.clipboard.writeText(code).then(() => {
                         const originalText = button.textContent;
-                        button.textContent = 'вњ“ РЎРєРѕРїРёСЂРѕРІР°РЅРѕ!';
+                        button.textContent = '✓ Скопировано!';
                         button.classList.add('copied');
                         setTimeout(() => {
                             button.textContent = originalText;
@@ -394,7 +334,7 @@
                     });
                 } else {
                     codeElement.classList.add('revealed');
-                    button.textContent = 'рџ“‹ РљРѕРїРёСЂРѕРІР°С‚СЊ';
+                    button.textContent = '📋 Копировать';
                 }
             }
         }
@@ -410,12 +350,12 @@
 
             const promoList = document.getElementById('publicPromoList');
             if (filtered.length === 0) {
-                promoList.innerHTML = '<div class="empty-state"><p>РџСЂРѕРјРѕРєРѕРґС‹ РЅРµ РЅР°Р№РґРµРЅС‹</p></div>';
+                promoList.innerHTML = '<div class="empty-state"><p>Промокоды не найдены</p></div>';
                 return;
             }
 
             promoList.innerHTML = filtered.map(promo => {
-                const buttonText = isUrl(promo.code) ? 'рџЊђ РћС‚РєСЂС‹С‚СЊ СЃР°Р№С‚' : 'рџ‘ЃпёЏ РџРѕРєР°Р·Р°С‚СЊ РєРѕРґ';
+                const buttonText = isUrl(promo.code) ? '🌐 Открыть сайт' : '👁️ Показать код';
                 return `
                     <div class="promo-card-public">
                         <div class="promo-info-public">
@@ -430,14 +370,9 @@
         }
 
         function escapeHtml(text) {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
-            return text.replace(/[&<>"']/g, m => map[m]);
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         init();
