@@ -15,7 +15,61 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: #000;
             color: #fff;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* ==================== ЛЕВАЯ ПАНЕЛЬ ==================== */
+        .sidebar {
+            width: 250px;
+            background-color: #0a0a0a;
+            border-right: 2px solid rgba(0, 208, 132, 0.2);
+            padding: 20px;
+            overflow-y: auto;
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #00d084;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0, 208, 132, 0.3);
+        }
+
+        .sidebar-item {
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            font-size: 0.95rem;
+            background-color: rgba(0, 208, 132, 0.05);
+        }
+
+        .sidebar-item:hover {
+            background-color: rgba(0, 208, 132, 0.15);
+            border-left-color: #00d084;
+        }
+
+        .sidebar-item.active {
+            background-color: rgba(0, 208, 132, 0.25);
+            border-left-color: #00ff9d;
+            color: #00ff9d;
+            font-weight: 600;
+        }
+
+        /* ==================== ОСНОВНОЙ КОНТЕНТ ==================== */
+        .main-content {
+            flex: 1;
+            margin-left: 250px;
             padding: 40px 20px;
+            overflow-y: auto;
         }
 
         .wrapper {
@@ -23,7 +77,7 @@
             margin: 0 auto;
         }
 
-        /* ==================== ЯЗЫК ==================== */
+        /* ==================== ЯЗЫКИ ==================== */
         .language-controls {
             position: fixed;
             top: 20px;
@@ -157,6 +211,8 @@
             color: #ccc;
             margin-bottom: 16px;
             line-height: 1.6;
+            white-space: pre-wrap;
+            word-wrap: break-word;
         }
 
         .promo-countries {
@@ -186,10 +242,6 @@
             transform: scale(1.02);
         }
 
-        .promo-code:active {
-            transform: scale(0.98);
-        }
-
         .button-group {
             display: flex;
             gap: 10px;
@@ -217,10 +269,6 @@
             background-color: #00ff9d;
         }
 
-        .copy-btn:active {
-            transform: scale(0.95);
-        }
-
         .visit-btn {
             background-color: transparent;
             border: 2px solid #00d084;
@@ -238,11 +286,6 @@
             text-align: center;
             padding: 80px 40px;
             color: #888;
-        }
-
-        .no-data p {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
         }
 
         .loading {
@@ -266,23 +309,33 @@
             100% { transform: rotate(360deg); }
         }
 
-        .loading-text {
-            color: #888;
-            font-size: 1rem;
+        .error-box {
+            background-color: rgba(255, 0, 0, 0.1);
+            border: 2px solid #ff4444;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            color: #ff8888;
         }
 
         /* ==================== АДАПТИВ ==================== */
         @media (max-width: 768px) {
             body {
-                padding: 20px 15px;
+                flex-direction: column;
             }
 
-            .language-controls {
+            .sidebar {
                 position: relative;
-                top: auto;
-                right: auto;
-                justify-content: center;
-                margin-bottom: 20px;
+                width: 100%;
+                height: auto;
+                border-right: none;
+                border-bottom: 2px solid rgba(0, 208, 132, 0.2);
+                padding: 15px;
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px 15px;
             }
 
             .header h1 {
@@ -291,63 +344,56 @@
 
             .promos-grid {
                 grid-template-columns: 1fr;
-                gap: 16px;
             }
 
-            .button-group {
-                flex-direction: column;
-            }
-
-            .search-input {
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header h1 {
-                font-size: 1.8rem;
-            }
-
-            .promo-title {
-                font-size: 1rem;
-            }
-
-            .search-input {
-                font-size: 0.95rem;
+            .language-controls {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+    <!-- ЯЗЫКИ -->
     <div class="language-controls">
         <button class="lang-btn active" onclick="switchLanguage('ru')" data-lang="ru">РУ</button>
         <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">EN</button>
     </div>
 
-    <div class="wrapper">
-        <!-- ЗАГОЛОВОК -->
-        <div class="header">
-            <h1>🎁 <span id="page-title">Промокоды и Скидки</span></h1>
-            <p class="subtitle" id="page-subtitle">Все актуальные промокоды в одном месте</p>
-        </div>
+    <!-- ЛЕВАЯ ПАНЕЛЬ -->
+    <div class="sidebar">
+        <div class="sidebar-title">📍 <span id="categories-title">Категории</span></div>
+        <div id="categories-list"></div>
+    </div>
 
-        <!-- ПОИСК -->
-        <div class="search-wrapper">
-            <input
-                type="text"
-                class="search-input"
-                id="search-input"
-                placeholder="🔍 Поиск промокодов..."
-                onkeyup="searchPromos()"
-            >
-        </div>
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
+    <div class="main-content">
+        <div class="wrapper">
+            <!-- ЗАГОЛОВОК -->
+            <div class="header">
+                <h1>🎁 <span id="page-title">Промокоды и Скидки</span></h1>
+                <p class="subtitle" id="page-subtitle">Все актуальные промокоды в одном месте</p>
+            </div>
 
-        <!-- ПРОМОКОДЫ -->
-        <div class="promos-grid" id="promos-container">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p class="loading-text" id="loading-text">Загрузка промокодов...</p>
+            <!-- ПОИСК -->
+            <div class="search-wrapper">
+                <input
+                    type="text"
+                    class="search-input"
+                    id="search-input"
+                    placeholder="🔍 Поиск промокодов..."
+                    onkeyup="searchPromos()"
+                >
+            </div>
+
+            <!-- ПРОМОКОДЫ -->
+            <div class="promos-grid" id="promos-container">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p id="loading-text">Загрузка промокодов...</p>
+                </div>
             </div>
         </div>
     </div>
@@ -355,6 +401,7 @@
     <script>
         // ==================== ЯЗЫКИ ====================
         let currentLanguage = 'ru';
+        let selectedCountry = null;
 
         const translations = {
             ru: {
@@ -365,7 +412,9 @@
                 'copy-code': '📋 Копировать код',
                 'visit-site': '🔗 Перейти',
                 'no-results': 'Промокоды не найдены',
-                'code-copied': 'Код скопирован!'
+                'code-copied': 'Код скопирован!',
+                'categories-title': 'Категории',
+                'all': '✅ Все страны'
             },
             en: {
                 'page-title': 'Promo Codes and Discounts',
@@ -375,7 +424,9 @@
                 'copy-code': '📋 Copy Code',
                 'visit-site': '🔗 Visit',
                 'no-results': 'No promo codes found',
-                'code-copied': 'Code copied!'
+                'code-copied': 'Code copied!',
+                'categories-title': 'Categories',
+                'all': '✅ All countries'
             }
         };
 
@@ -386,25 +437,23 @@
         function switchLanguage(lang) {
             currentLanguage = lang;
 
-            // Обновляем активную кнопку
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.lang === lang);
             });
 
-            // Обновляем текст на странице
             document.getElementById('page-title').textContent = t('page-title');
             document.getElementById('page-subtitle').textContent = t('page-subtitle');
             document.getElementById('search-input').placeholder = t('search-placeholder');
-            document.getElementById('loading-text').textContent = t('loading-text');
+            document.getElementById('categories-title').textContent = t('categories-title');
 
-            // Перерендерим промокоды
+            renderCategories();
             renderPromos();
         }
 
         // ==================== ДАННЫЕ ====================
         let allPromos = [];
+        let allCountries = [];
 
-        // ЗАМЕНИТЕ НА ВАШУ ССЫЛКУ НА GOOGLE SHEETS!
         const SHEETS_ID = '1idWh0yBX_YjO155R99NVNg28_-2P15r0kry7EB5GG_8';
         const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SHEETS_ID}/export?format=csv`;
 
@@ -412,13 +461,26 @@
         async function loadPromocodes() {
             try {
                 const response = await fetch(SHEETS_URL);
-                if (!response.ok) throw new Error('Network error');
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
                 const csv = await response.text();
                 allPromos = parseCSV(csv);
+                extractCountries();
+                renderCategories();
                 renderPromos();
             } catch (error) {
-                console.error('Error loading promos:', error);
-                showError('Ошибка загрузки. Проверьте URL Google Sheets.');
+                console.error('Ошибка загрузки:', error);
+                showError(`
+                    <strong>❌ Ошибка загрузки Google Sheets</strong>
+                    <br><br>
+                    Возможные причины:
+                    <br>1. Таблица не опубликована
+                    <br>2. Неверный ID таблицы
+                    <br>3. Проблемы с сетью
+                `);
             }
         }
 
@@ -433,7 +495,6 @@
                 const line = lines[i].trim();
                 if (!line) continue;
 
-                // Парсим CSV с поддержкой кавычек
                 const values = [];
                 let current = '';
                 let inQuotes = false;
@@ -457,6 +518,13 @@
                 });
 
                 if ((promo.name || promo.title) && promo.code) {
+                    // Фильтруем нежелательные промокоды
+                    const description = (promo.description || '').toLowerCase();
+                    if (description.includes('либо авторизоваться') || 
+                        description.includes('авторизация') ||
+                        description.includes('без авторизации')) {
+                        continue; // Пропускаем этот промокод
+                    }
                     promos.push(promo);
                 }
             }
@@ -464,23 +532,54 @@
             return promos;
         }
 
+        function extractCountries() {
+            const countries = new Set();
+            allPromos.forEach(promo => {
+                if (promo.countries) {
+                    promo.countries.split(',').forEach(c => {
+                        const country = c.trim().toUpperCase();
+                        if (country) countries.add(country);
+                    });
+                }
+            });
+            allCountries = Array.from(countries).sort();
+        }
+
+        // ==================== КАТЕГОРИИ ====================
+        function renderCategories() {
+            const container = document.getElementById('categories-list');
+            let html = `<div class="sidebar-item ${selectedCountry === null ? 'active' : ''}" onclick="filterByCountry(null)">${t('all')}</div>`;
+
+            allCountries.forEach(country => {
+                html += `<div class="sidebar-item ${selectedCountry === country ? 'active' : ''}" onclick="filterByCountry('${country}')">${country}</div>`;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function filterByCountry(country) {
+            selectedCountry = country;
+            renderCategories();
+            renderPromos();
+        }
+
         // ==================== РЕНДЕРИНГ ====================
         function renderPromos() {
             const container = document.getElementById('promos-container');
             const searchTerm = document.getElementById('search-input').value.toLowerCase();
 
-            // Фильтруем промокоды по поиску
-            const filtered = allPromos.filter(promo => {
+            let filtered = allPromos.filter(promo => {
                 const searchText = `${promo.name || ''} ${promo.title || ''} ${promo.code || ''} ${promo.description || ''} ${promo.discount || ''}`.toLowerCase();
-                return searchText.includes(searchTerm);
+                const matchSearch = searchText.includes(searchTerm);
+
+                if (selectedCountry === null) return matchSearch;
+
+                const countries = (promo.countries || '').split(',').map(c => c.trim().toUpperCase());
+                return matchSearch && countries.includes(selectedCountry);
             });
 
             if (filtered.length === 0) {
-                container.innerHTML = `
-                    <div class="no-data">
-                        <p>${searchTerm ? t('no-results') : ''}</p>
-                    </div>
-                `;
+                container.innerHTML = `<div class="no-data"><p>${searchTerm ? t('no-results') : ''}</p></div>`;
                 return;
             }
 
@@ -530,8 +629,8 @@
 
         function showError(message) {
             document.getElementById('promos-container').innerHTML = `
-                <div class="no-data">
-                    <p>❌ ${message}</p>
+                <div class="error-box">
+                    ${message}
                 </div>
             `;
         }
