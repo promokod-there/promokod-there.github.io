@@ -499,7 +499,7 @@
                         ${countries ? `<div class="promo-countries">🌍 ${escapeHtml(countries)}</div>` : ''}
                         <div class="promo-code" onclick="copyCode('${code}')">${escapeHtml(code)}</div>
                         <div class="button-group">
-                            <button class="promo-btn copy-btn" onclick="copyCode('${code}')">${t('copy-code')}</button>
+                            <button class="action-btn" onclick="ym(105979040, 'reachGoal', 'open_promo'); handlePromoAction(...)" ...>
                             ${url && url !== '#' ? `<button class="promo-btn visit-btn" onclick="window.open('${escapeHtml(url)}', '_blank')">${t('visit-site')}</button>` : ''}
                         </div>
                     </div>
