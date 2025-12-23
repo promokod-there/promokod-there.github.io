@@ -3,268 +3,423 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Промокоды и Скидки</title>
-    <meta name="verify-admitad" content="c7cb9d56ae" />
-<script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=105979040', 'ym');
-
-    ym(105979040, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/105979040" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <title>🎁 Промокоды и Скидки</title>
     <style>
-        :root {
-            --color-primary: #ffffff;
-            --color-accent: #00ff88;
-            --color-accent-dark: #00dd77;
-            --color-bg: #000000;
-            --color-surface: #0a1a1a;
-            --color-text: #e0ffff;
-            --color-text-secondary: #7fffd4;
-            --color-border: #1a5c5c;
-        }
-
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
-            background: var(--color-bg);
-            color: var(--color-text);
-            margin: 0;
-            padding: 0;
-            letter-spacing: -0.5px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #000;
+            color: #fff;
+            padding: 40px 20px;
         }
 
-        .container {
-            max-width: 1000px;
+        .wrapper {
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
         }
 
-        .public-header {
-            text-align: center;
-            margin-bottom: 60px;
-            padding: 60px 20px 20px;
-            position: relative;
-        }
-
-        .public-header h1 {
-            font-size: 56px;
-            margin: 0 0 16px 0;
-            color: var(--color-primary);
-            font-weight: 700;
-            letter-spacing: -2px;
-            line-height: 1.1;
-        }
-
-        .public-header p {
-            font-size: 18px;
-            color: var(--color-text-secondary);
-            margin: 0 0 30px 0;
-            font-weight: 400;
-        }
-
-        .search-box {
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 40px;
-            display: block;
-            padding: 14px 20px;
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
-            font-size: 15px;
-            background: var(--color-surface);
-            color: var(--color-text);
-        }
-
-        .search-box:focus {
-            outline: none;
-            border-color: var(--color-accent);
-            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
-        }
-
-        .promo-list {
-            display: grid;
-            gap: 20px;
-        }
-
-        .promo-card-public {
-            background: rgba(10, 26, 26, 0.25);
-            backdrop-filter: blur(12px);
-            padding: 32px;
-            border-radius: 16px;
-            border: 2px solid rgba(0, 255, 136, 0.2);
-            box-shadow: 0 8px 40px rgba(0, 255, 136, 0.1), inset 0 0 25px rgba(0, 255, 136, 0.05);
+        /* ==================== ЯЗЫК ==================== */
+        .language-controls {
+            position: fixed;
+            top: 20px;
+            right: 20px;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 32px;
-            flex-wrap: wrap;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            gap: 8px;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            padding: 8px 14px;
+            background-color: rgba(0, 208, 132, 0.2);
+            border: 1px solid #00d084;
+            color: #00d084;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background-color: rgba(0, 208, 132, 0.3);
+        }
+
+        .lang-btn.active {
+            background-color: #00d084;
+            color: #000;
+            border-color: #00ff9d;
+        }
+
+        /* ==================== ЗАГОЛОВОК ==================== */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 20px;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .header .subtitle {
+            color: #00d084;
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* ==================== ПОИСК ==================== */
+        .search-wrapper {
+            margin: 40px 0;
+            text-align: center;
+        }
+
+        .search-input {
+            width: 100%;
+            max-width: 600px;
+            padding: 14px 20px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border: 2px solid #00d084;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .search-input::placeholder {
+            color: #666;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #00ff9d;
+            background-color: rgba(0, 208, 132, 0.1);
+            box-shadow: 0 0 15px rgba(0, 208, 132, 0.2);
+        }
+
+        /* ==================== ПРОМОКОДЫ КОНТЕЙНЕР ==================== */
+        .promos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        /* ==================== ПРОМОКОД КАРТОЧКА ==================== */
+        .promo-item {
+            background: linear-gradient(135deg, rgba(0, 208, 132, 0.05) 0%, rgba(0, 208, 132, 0.02) 100%);
+            border: 2px solid rgba(0, 208, 132, 0.3);
+            border-radius: 12px;
+            padding: 24px;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: default;
         }
 
-        .promo-card-public:hover {
-            background: rgba(10, 26, 26, 0.5);
-            box-shadow: 0 12px 60px rgba(0, 255, 136, 0.25), 0 0 60px rgba(119, 0, 255, 0.08), inset 0 0 35px rgba(0, 255, 136, 0.12);
-            transform: translateY(-4px);
-            border-color: rgba(0, 255, 255, 0.5);
+        .promo-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #00d084 0%, #00ff9d 100%);
         }
 
-        .promo-info-public {
-            flex: 1;
-            min-width: 250px;
-            position: relative;
-            z-index: 1;
+        .promo-item:hover {
+            border-color: #00d084;
+            background: linear-gradient(135deg, rgba(0, 208, 132, 0.1) 0%, rgba(0, 208, 132, 0.05) 100%);
+            box-shadow: 0 0 30px rgba(0, 208, 132, 0.2);
+            transform: translateY(-8px);
         }
 
-        .promo-code-public {
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--color-accent);
-            margin: 0 0 12px 0;
-            word-break: break-all;
-            background: rgba(99, 102, 241, 0.1);
-            padding: 14px 16px;
-            border-radius: 10px;
-            display: inline-block;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-            filter: blur(8px);
-            transition: filter 0.3s ease;
-        }
-
-        .promo-code-public.revealed {
-            filter: blur(0);
-        }
-
-        .promo-name-public {
-            font-size: 18px;
+        .promo-title {
+            font-size: 1.1rem;
             font-weight: 600;
-            margin: 14px 0 10px 0;
-            color: var(--color-primary);
-            letter-spacing: -0.4px;
+            color: #00ff9d;
+            margin: 8px 0 16px 0;
+            line-height: 1.4;
         }
 
-        .promo-description-public {
-            font-size: 15px;
-            color: var(--color-text-secondary);
-            margin: 0;
+        .promo-description {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 16px;
             line-height: 1.6;
         }
 
-        .action-btn {
-            padding: 14px 28px;
-            background: var(--color-accent);
-            color: #000000;
+        .promo-countries {
+            font-size: 0.85rem;
+            color: #888;
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .promo-code {
+            background: rgba(0, 0, 0, 0.5);
+            border-left: 3px solid #00d084;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #00d084;
+            margin-bottom: 16px;
+            word-break: break-all;
+            user-select: all;
+            cursor: copy;
+            transition: all 0.3s ease;
+        }
+
+        .promo-code:hover {
+            background: rgba(0, 208, 132, 0.15);
+            transform: scale(1.02);
+        }
+
+        .promo-code:active {
+            transform: scale(0.98);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .promo-btn {
+            flex: 1;
+            padding: 12px 20px;
             border: none;
-            border-radius: 12px;
-            font-size: 15px;
+            border-radius: 6px;
             font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-            white-space: nowrap;
-            position: relative;
-            z-index: 1;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .action-btn:hover {
-            background: var(--color-accent-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 40px rgba(0, 255, 136, 0.6), 0 0 40px rgba(0, 255, 255, 0.3), 0 0 20px rgba(119, 0, 255, 0.2);
+        .copy-btn {
+            background-color: #00d084;
+            color: #000;
         }
 
-        .action-btn.copied {
-            background: #4CAF50;
+        .copy-btn:hover {
+            background-color: #00ff9d;
         }
 
-        .empty-state {
+        .copy-btn:active {
+            transform: scale(0.95);
+        }
+
+        .visit-btn {
+            background-color: transparent;
+            border: 2px solid #00d084;
+            color: #00d084;
+        }
+
+        .visit-btn:hover {
+            background-color: rgba(0, 208, 132, 0.2);
+            border-color: #00ff9d;
+            color: #00ff9d;
+        }
+
+        /* ==================== СОСТОЯНИЯ ==================== */
+        .no-data {
             text-align: center;
-            padding: 60px 20px;
-            color: var(--color-text-secondary);
+            padding: 80px 40px;
+            color: #888;
+        }
+
+        .no-data p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
         }
 
         .loading {
             text-align: center;
-            padding: 40px 20px;
-            color: var(--color-text-secondary);
+            padding: 60px 20px;
         }
 
         .spinner {
             display: inline-block;
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(0, 255, 136, 0.3);
-            border-top-color: var(--color-accent);
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(0, 208, 132, 0.2);
+            border-top: 4px solid #00d084;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
             margin-bottom: 20px;
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
+        .loading-text {
+            color: #888;
+            font-size: 1rem;
+        }
+
+        /* ==================== АДАПТИВ ==================== */
         @media (max-width: 768px) {
-            .promo-card-public {
-                flex-direction: column;
-                gap: 20px;
+            body {
+                padding: 20px 15px;
             }
 
-            .action-btn {
-                width: 100%;
+            .language-controls {
+                position: relative;
+                top: auto;
+                right: auto;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .promos-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .search-input {
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+
+            .promo-title {
+                font-size: 1rem;
+            }
+
+            .search-input {
+                font-size: 0.95rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="public-header">
-            <h1>🎁 Промокоды и Скидки</h1>
-            <p>Все актуальные промокоды в одном месте</p>
+    <!-- ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА -->
+    <div class="language-controls">
+        <button class="lang-btn active" onclick="switchLanguage('ru')" data-lang="ru">РУ</button>
+        <button class="lang-btn" onclick="switchLanguage('en')" data-lang="en">EN</button>
+    </div>
+
+    <div class="wrapper">
+        <!-- ЗАГОЛОВОК -->
+        <div class="header">
+            <h1>🎁 <span id="page-title">Промокоды и Скидки</span></h1>
+            <p class="subtitle" id="page-subtitle">Все актуальные промокоды в одном месте</p>
         </div>
 
-        <input type="text" class="search-box" id="publicSearchBox" placeholder="🔍 Поиск промокодов...">
+        <!-- ПОИСК -->
+        <div class="search-wrapper">
+            <input
+                type="text"
+                class="search-input"
+                id="search-input"
+                placeholder="🔍 Поиск промокодов..."
+                onkeyup="searchPromos()"
+            >
+        </div>
 
-        <div class="promo-list" id="publicPromoList">
+        <!-- ПРОМОКОДЫ -->
+        <div class="promos-grid" id="promos-container">
             <div class="loading">
                 <div class="spinner"></div>
-                <p>Загрузка промокодов...</p>
+                <p class="loading-text" id="loading-text">Загрузка промокодов...</p>
             </div>
         </div>
     </div>
 
     <script>
-        const SHEETS_ID = '1idWh0yBX_YjO155R99NVNg28_-2P15r0kry7EB5GG_8';
-        const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SHEETS_ID}/export?format=csv`;
-        
-        let promos = [];
-        let allPromos = [];
+        // ==================== ЯЗЫКИ ====================
+        let currentLanguage = 'ru';
 
-        function init() {
-            loadPromosFromSheet();
-            document.getElementById('publicSearchBox').addEventListener('input', handlePublicSearch);
+        const translations = {
+            ru: {
+                'page-title': 'Промокоды и Скидки',
+                'page-subtitle': 'Все актуальные промокоды в одном месте',
+                'search-placeholder': '🔍 Поиск промокодов...',
+                'loading-text': 'Загрузка промокодов...',
+                'copy-code': '📋 Копировать код',
+                'visit-site': '🔗 Перейти',
+                'no-results': 'Промокоды не найдены',
+                'code-copied': 'Код скопирован!'
+            },
+            en: {
+                'page-title': 'Promo Codes and Discounts',
+                'page-subtitle': 'All current promo codes in one place',
+                'search-placeholder': '🔍 Search for promo codes...',
+                'loading-text': 'Loading promo codes...',
+                'copy-code': '📋 Copy Code',
+                'visit-site': '🔗 Visit',
+                'no-results': 'No promo codes found',
+                'code-copied': 'Code copied!'
+            }
+        };
+
+        function t(key) {
+            return translations[currentLanguage][key] || translations.ru[key];
         }
 
-        function loadPromosFromSheet() {
-            fetch(SHEETS_URL)
-                .then(response => response.text())
-                .then(csv => {
-                    promos = parseCSV(csv);
-                    allPromos = JSON.parse(JSON.stringify(promos));
-                    renderPublicPromos();
-                })
-                .catch(error => {
-                    console.error('Ошибка загрузки:', error);
-                    document.getElementById('publicPromoList').innerHTML = '<div class="empty-state"><p>Ошибка загрузки промокодов</p></div>';
-                });
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+
+            // Обновляем активную кнопку
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.lang === lang);
+            });
+
+            // Обновляем текст на странице
+            document.getElementById('page-title').textContent = t('page-title');
+            document.getElementById('page-subtitle').textContent = t('page-subtitle');
+            document.getElementById('search-input').placeholder = t('search-placeholder');
+            document.getElementById('loading-text').textContent = t('loading-text');
+
+            // Перерендерим промокоды
+            renderPromos();
+        }
+
+        // ==================== ДАННЫЕ ====================
+        let allPromos = [];
+
+        // ЗАМЕНИТЕ НА ВАШУ ССЫЛКУ НА GOOGLE SHEETS!
+        const SHEETS_ID = '1idWh0yBX_YjO155R99NVNg28_-2P15r0kry7EB5GG_8';
+        const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SHEETS_ID}/export?format=csv`;
+
+        // ==================== ЗАГРУЗКА ====================
+        async function loadPromocodes() {
+            try {
+                const response = await fetch(GOOGLE_SHEETS_URL);
+                if (!response.ok) throw new Error('Network error');
+                const csv = await response.text();
+                allPromos = parseCSV(csv);
+                renderPromos();
+            } catch (error) {
+                console.error('Error loading promos:', error);
+                showError('Ошибка загрузки. Проверьте URL Google Sheets.');
+            }
         }
 
         function parseCSV(csv) {
@@ -272,112 +427,99 @@
             if (lines.length < 2) return [];
 
             const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
-            const codeIndex = headers.indexOf('code');
-            const nameIndex = headers.indexOf('name');
-            const descriptionIndex = headers.indexOf('description');
-            const statusIndex = headers.indexOf('status');
+            const promos = [];
 
-            const result = [];
             for (let i = 1; i < lines.length; i++) {
-                const cells = lines[i].split(',').map(c => c.trim());
-                if (cells.length > 1 && cells[codeIndex]) {
-                    result.push({
-                        id: i,
-                        code: cells[codeIndex] || '',
-                        name: cells[nameIndex] || '',
-                        description: cells[descriptionIndex] || '',
-                        status: cells[statusIndex] || 'active'
-                    });
+                const line = lines[i].trim();
+                if (!line) continue;
+
+                // Парсим CSV с поддержкой кавычек
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+
+                for (let j = 0; j < line.length; j++) {
+                    const char = line[j];
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim().replace(/^"|"$/g, ''));
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim().replace(/^"|"$/g, ''));
+
+                const promo = {};
+                headers.forEach((header, index) => {
+                    promo[header] = values[index] || '';
+                });
+
+                if ((promo.name || promo.title) && promo.code) {
+                    promos.push(promo);
                 }
             }
-            return result;
+
+            return promos;
         }
 
-        function renderPublicPromos() {
-            const promoList = document.getElementById('publicPromoList');
-            const activePromos = promos.filter(p => p.status.toLowerCase().trim() === 'active');
-            
-            if (activePromos.length === 0) {
-                promoList.innerHTML = '<div class="empty-state"><p>Нет активных промокодов</p></div>';
-                return;
-            }
+        // ==================== РЕНДЕРИНГ ====================
+        function renderPromos() {
+            const container = document.getElementById('promos-container');
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
 
-            promoList.innerHTML = activePromos.map(promo => {
-                const buttonText = isUrl(promo.code) ? '🌐 Открыть сайт' : '👁️ Показать код';
-                return `
-                    <div class="promo-card-public">
-                        <div class="promo-info-public">
-                            <div class="promo-code-public" data-code="${escapeHtml(promo.code)}">${escapeHtml(promo.code)}</div>
-                            <div class="promo-name-public">${escapeHtml(promo.name)}</div>
-                            <div class="promo-description-public">${escapeHtml(promo.description)}</div>
-                        </div>
-                        <button class="action-btn" onclick="handlePromoAction(this, '${escapeHtml(promo.code)}')">${buttonText}</button>
-                    </div>
-                `;
-            }).join('');
-        }
+            // Фильтруем промокоды по поиску
+            const filtered = allPromos.filter(promo => {
+                const searchText = `${promo.name || ''} ${promo.title || ''} ${promo.code || ''} ${promo.description || ''} ${promo.discount || ''}`.toLowerCase();
+                return searchText.includes(searchTerm);
+            });
 
-        function isUrl(code) {
-            return code.startsWith('http://') || code.startsWith('https://');
-        }
-
-        function handlePromoAction(button, code) {
-            const codeElement = button.previousElementSibling.querySelector('.promo-code-public');
-            
-            if (isUrl(code)) {
-                window.open(code, '_blank');
-                button.textContent = '🔗 Открыто';
-                button.style.background = '#666';
-                setTimeout(() => {
-                    button.textContent = '🌐 Открыть сайт';
-                    button.style.background = '';
-                }, 2000);
-            } else {
-                if (codeElement.classList.contains('revealed')) {
-                    navigator.clipboard.writeText(code).then(() => {
-                        const originalText = button.textContent;
-                        button.textContent = '✓ Скопировано!';
-                        button.classList.add('copied');
-                        setTimeout(() => {
-                            button.textContent = originalText;
-                            button.classList.remove('copied');
-                        }, 2000);
-                    });
-                } else {
-                    codeElement.classList.add('revealed');
-                    button.textContent = '📋 Копировать';
-                }
-            }
-        }
-
-        function handlePublicSearch(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            const filtered = allPromos.filter(p => 
-                p.status.toLowerCase().trim() === 'active' && (
-                p.code.toLowerCase().includes(searchTerm) || 
-                p.name.toLowerCase().includes(searchTerm) ||
-                p.description.toLowerCase().includes(searchTerm)
-            ));
-
-            const promoList = document.getElementById('publicPromoList');
             if (filtered.length === 0) {
-                promoList.innerHTML = '<div class="empty-state"><p>Промокоды не найдены</p></div>';
+                container.innerHTML = `
+                    <div class="no-data">
+                        <p>${searchTerm ? t('no-results') : ''}</p>
+                    </div>
+                `;
                 return;
             }
 
-            promoList.innerHTML = filtered.map(promo => {
-                const buttonText = isUrl(promo.code) ? '🌐 Открыть сайт' : '👁️ Показать код';
-                return `
-                    <div class="promo-card-public">
-                        <div class="promo-info-public">
-                            <div class="promo-code-public" data-code="${escapeHtml(promo.code)}">${escapeHtml(promo.code)}</div>
-                            <div class="promo-name-public">${escapeHtml(promo.name)}</div>
-                            <div class="promo-description-public">${escapeHtml(promo.description)}</div>
+            let html = '';
+            filtered.forEach(promo => {
+                const name = promo.name || promo.title || 'Промокод';
+                const code = promo.code || 'N/A';
+                const description = promo.description || promo.discount || '';
+                const countries = promo.countries || '';
+                const url = promo.url || promo.link || '#';
+
+                html += `
+                    <div class="promo-item">
+                        <div class="promo-title">${escapeHtml(name)}</div>
+                        ${description ? `<div class="promo-description">${escapeHtml(description)}</div>` : ''}
+                        ${countries ? `<div class="promo-countries">🌍 ${escapeHtml(countries)}</div>` : ''}
+                        <div class="promo-code" onclick="copyCode('${code}')">${escapeHtml(code)}</div>
+                        <div class="button-group">
+                            <button class="promo-btn copy-btn" onclick="copyCode('${code}')">${t('copy-code')}</button>
+                            ${url && url !== '#' ? `<button class="promo-btn visit-btn" onclick="window.open('${escapeHtml(url)}', '_blank')">${t('visit-site')}</button>` : ''}
                         </div>
-                        <button class="action-btn" onclick="ym(105979040, 'reachGoal', 'open_promo'); handlePromoAction(this, '${escapeHtml(promo.code)}')" >${buttonText}</button>
                     </div>
                 `;
-            }).join('');
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ==================== ФУНКЦИИ ====================
+        function searchPromos() {
+            renderPromos();
+        }
+
+        function copyCode(code) {
+            navigator.clipboard.writeText(code).then(() => {
+                alert(t('code-copied') + ' ' + code);
+            }).catch(err => {
+                console.error('Copy failed:', err);
+            });
         }
 
         function escapeHtml(text) {
@@ -386,7 +528,18 @@
             return div.innerHTML;
         }
 
-        init();
+        function showError(message) {
+            document.getElementById('promos-container').innerHTML = `
+                <div class="no-data">
+                    <p>❌ ${message}</p>
+                </div>
+            `;
+        }
+
+        // ==================== ИНИЦИАЛИЗАЦИЯ ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            loadPromocodes();
+        });
     </script>
 </body>
 </html>
