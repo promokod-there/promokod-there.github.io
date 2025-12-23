@@ -376,7 +376,7 @@
                             <div class="promo-name-public">${escapeHtml(promo.name)}</div>
                             <div class="promo-description-public">${escapeHtml(promo.description)}</div>
                         </div>
-                        <button class="action-btn" onclick="handlePromoAction(this, '${escapeHtml(promo.code)}')">${buttonText}</button>
+                        <button class="action-btn" onclick="ym(105979040, 'reachGoal', 'open_promo'); handlePromoAction(this, '${escapeHtml(promo.code)}')" >${buttonText}</button>
                     </div>
                 `;
             }).join('');
