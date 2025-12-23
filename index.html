@@ -411,7 +411,7 @@
         // ==================== ЗАГРУЗКА ====================
         async function loadPromocodes() {
             try {
-                const response = await fetch(GOOGLE_SHEETS_URL);
+                const response = await fetch(SHEETS_URL);
                 if (!response.ok) throw new Error('Network error');
                 const csv = await response.text();
                 allPromos = parseCSV(csv);
