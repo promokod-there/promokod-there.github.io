@@ -612,7 +612,6 @@
                         <div class="promo-code" id="${codeId}" onclick="toggleCode('${codeId}', '${btnId}')">${escapeHtml(code)}</div>
                         <div class="button-group">
                              <button class="action-btn" onclick="ym(105979040, 'reachGoal', 'open_promo'); handlePromoAction(this, '${escapeHtml(promo.code)}')" >${buttonText}</button>
-                            ${url && url !== '#' ? `<button class="promo-btn visit-btn" onclick="window.open('${escapeHtml(url)}', '_blank')">${t('visit-site')}</button>` : ''}
                         </div>
                     </div>
                 `;
