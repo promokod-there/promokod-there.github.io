@@ -592,7 +592,7 @@
             if (filtered.length === 0) {
                 container.innerHTML = `<div class="no-data"><p>${searchTerm ? t('no-results') : ''}</p></div>`;
                 return;
-            }
+        }
 
             let html = '';
             filtered.forEach((promo, index) => {
@@ -602,16 +602,16 @@
                 const countries = promo.countries || '';
                 const url = promo.url || promo.link || '#';
                 const codeId = `code-${index}`;
-                const btnId = `btn-${index}`;
 
                 html += `
                     <div class="promo-item">
                         <div class="promo-title">${escapeHtml(name)}</div>
                         ${description ? `<div class="promo-description">${escapeHtml(description)}</div>` : ''}
                         ${countries ? `<div class="promo-countries">🌍 ${escapeHtml(countries)}</div>` : ''}
-                        <div class="promo-code" id="${codeId}" onclick="toggleCode('${codeId}', '${btnId}')">${escapeHtml(code)}</div>
+                        <div class="promo-code" id="${codeId}" onclick="toggleCode('${codeId}')">${escapeHtml(code)}</div>
                         <div class="button-group">
-                             <button class="action-btn" onclick="ym(105979040, 'reachGoal', 'open_promo'); handlePromoAction(this, '${escapeHtml(promo.code)}')" >${buttonText}</button>
+                            <button class="promo-btn copy-btn" onclick="ym(105979040, 'reachGoal', 'open_promo'); copyCode('${escapeHtml(code)}')">${t('copy-code')}</button>
+                            ${url && url !== '#' ? `<button class="promo-btn visit-btn" onclick="ym(105979040, 'reachGoal', 'visit_promo'); window.open('${escapeHtml(url)}', '_blank')">${t('visit-site')}</button>` : ''}
                         </div>
                     </div>
                 `;
