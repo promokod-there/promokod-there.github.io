@@ -465,20 +465,23 @@
         let allPromos = [];
         let allCountries = [];
 
-        const SHEETS_ID = '1idWh0yBX_YjO155R99NVNg28_-2P15r0kry7EB5GG_8';
-        const SHEETS_URL = `https://docs.google.com/spreadsheets/d/${SHEETS_ID}/export?format=csv`;
-
         // ==================== ЗАГРУЗКА ====================
         async function loadPromocodes() {
             try {
-                const response = await fetch(SHEETS_URL);
+                const SHEETS_ID = '1idWh0yBX_YjO155R99NVNg28_-2P15r0kry7EB5GG_8';
+                const API_KEY = 'AIzaSyDuAie05b1MZ0lMd9XCQczokBQUf4qjkzM';
+                const RANGE = 'Sheet1!A:F';
+                
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEETS_ID}/values/${RANGE}?key=${API_KEY}`;
+                
+                const response = await fetch(url);
                 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 
-                const csv = await response.text();
-                allPromos = parseCSV(csv);
+                const data = await response.json();
+                allPromos = parseGoogleSheetsData(data.values);
                 extractCountries();
                 renderCategories();
                 renderPromos();
@@ -495,51 +498,31 @@
             }
         }
 
-        function parseCSV(csv) {
-            const lines = csv.trim().split('\n');
-            if (lines.length < 2) return [];
-
-            const headers = lines[0].split(',').map(h => h.trim().toLowerCase());
+        function parseGoogleSheetsData(rows) {
+            if (!rows || rows.length < 2) return [];
+            
+            const headers = rows[0].map(h => h.trim().toLowerCase());
             const promos = [];
-
-            for (let i = 1; i < lines.length; i++) {
-                const line = lines[i].trim();
-                if (!line) continue;
-
-                const values = [];
-                let current = '';
-                let inQuotes = false;
-
-                for (let j = 0; j < line.length; j++) {
-                    const char = line[j];
-                    if (char === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (char === ',' && !inQuotes) {
-                        values.push(current.trim().replace(/^"|"$/g, ''));
-                        current = '';
-                    } else {
-                        current += char;
-                    }
-                }
-                values.push(current.trim().replace(/^"|"$/g, ''));
-
+            
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                if (!row || row.length === 0) continue;
+                
                 const promo = {};
                 headers.forEach((header, index) => {
-                    promo[header] = values[index] || '';
+                    promo[header] = row[index] || '';
                 });
-
+                
                 if ((promo.name || promo.title) && promo.code) {
-                    // Фильтруем нежелательные промокоды
                     const description = (promo.description || '').toLowerCase();
-                    if (description.includes('либо авторизоваться') || 
-                        description.includes('авторизация') ||
-                        description.includes('без авторизации')) {
-                        continue;
+                    if (!description.includes('либо авторизоваться') && 
+                        !description.includes('авторизация') &&
+                        !description.includes('без авторизации')) {
+                        promos.push(promo);
                     }
-                    promos.push(promo);
                 }
             }
-
+            
             return promos;
         }
 
